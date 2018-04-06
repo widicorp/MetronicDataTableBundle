@@ -29,7 +29,7 @@ public function registerBundles()
 {
     $bundles = [
         // ...
-        new DataTables\DataTablesBundle(),
+        new Widicorp\MetronicDataTableBundle\WidicorpMetronicDatatableBundle(),
     ];
 }
 ```
