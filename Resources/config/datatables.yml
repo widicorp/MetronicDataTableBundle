@@ -1,0 +1,7 @@
+services:
+
+    datatables:
+        class: Widicorp\MetronicDataTableBundle\DataTables
+        arguments: [ '@logger', '@validator' ]
+
+    Widicorp\MetronicDataTableBundle\DataTablesInterface: '@datatables'
