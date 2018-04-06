@@ -1,4 +1,5 @@
 <?php
+
 namespace Widicorp\MetronicDataTableBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
@@ -13,7 +14,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class DataTablesExtension extends Extension implements CompilerPassInterface
+class WidicorpMetronicDataTableExtension extends Extension implements CompilerPassInterface
 {
     /**
      * {@inheritdoc}
