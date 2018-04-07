@@ -1,5 +1,8 @@
 # MetronicDataTableBundle
 [![StyleCI](https://styleci.io/repos/128211339/shield?branch=master)](https://styleci.io/repos/128211339)
+[![Latest Stable Version](https://poser.pugx.org/widicorp/metronic-datatable-bundle/v/stable)](https://packagist.org/packages/widicorp/metronic-datatable-bundle)
+[![Total Downloads](https://poser.pugx.org/widicorp/metronic-datatable-bundle/downloads)](https://packagist.org/packages/widicorp/metronic-datatable-bundle)
+[![License](https://poser.pugx.org/widicorp/metronic-datatable-bundle/license)](https://packagist.org/packages/widicorp/metronic-datatable-bundle)
 
 This bundle helps to implement data source actions for [mDataTables](https://keenthemes.com/metronic/documentation.html#sec14) JavaScript plugin when it's used in [remote-type processing](https://keenthemes.com/metronic/documentation.html#sec14) mode.
 
