@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\MetronicDataTableBundle;
 
 /**
@@ -12,22 +21,24 @@ namespace Widicorp\MetronicDataTableBundle;
  */
 class Order extends ValueObject implements \JsonSerializable
 {
-    const ASC  = 'asc';
+    const ASC = 'asc';
+
     const DESC = 'desc';
 
     protected $column;
+
     protected $dir;
 
     /**
      * Initializing constructor.
      *
-     * @param string    $column
+     * @param string $column
      * @param string $dir
      */
     public function __construct(string $column, string $dir)
     {
         $this->column = $column;
-        $this->dir    = $dir;
+        $this->dir = $dir;
     }
 
     /**
@@ -37,7 +48,7 @@ class Order extends ValueObject implements \JsonSerializable
     {
         return [
             'column' => $this->column,
-            'dir'    => $this->dir,
+            'dir' => $this->dir,
         ];
     }
 }

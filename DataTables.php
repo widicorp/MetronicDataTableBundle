@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\MetronicDataTableBundle;
 
 use Psr\Log\LoggerInterface;
@@ -12,6 +21,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class DataTables implements DataTablesInterface
 {
     protected $logger;
+
     protected $validator;
 
     /** @var DataTableHandlerInterface[] List of registered DataTable services. */
@@ -25,21 +35,21 @@ class DataTables implements DataTablesInterface
      */
     public function __construct(LoggerInterface $logger, ValidatorInterface $validator)
     {
-        $this->logger    = $logger;
+        $this->logger = $logger;
         $this->validator = $validator;
     }
 
     /**
      * Registers specified DataTable handler.
      *
-     * @param DataTableHandlerInterface $service Service of the DataTable handler.
-     * @param string                    $id      DataTable ID.
+     * @param DataTableHandlerInterface $service service of the DataTable handler
+     * @param string                    $id      dataTable ID
      */
     public function addService(DataTableHandlerInterface $service, string $id = null)
     {
         $service_id = $id ?? $service::ID;
 
-        if ($service_id !== null) {
+        if (null !== $service_id) {
             $this->services[$service_id] = $service;
         }
     }
@@ -63,11 +73,11 @@ class DataTables implements DataTablesInterface
 
         $pagination = $request->get('pagination');
 
-        $start = ($pagination['page'] - 1)  * $pagination['perpage'];
-        $params->start   = ($start > 0 && (!isset($pagination['total']) || $start <= $pagination['total'])) ? $start :  0;
-        $params->length  = $pagination['perpage'];
-        $params->search  = $request->get('query')['generalSearch'] ?? '';
-        $params->order   = [$request->get('sort')];
+        $start = ($pagination['page'] - 1) * $pagination['perpage'];
+        $params->start = ($start > 0 && (!isset($pagination['total']) || $start <= $pagination['total'])) ? $start : 0;
+        $params->length = $pagination['perpage'];
+        $params->search = $request->get('query')['generalSearch'] ?? '';
+        $params->order = [$request->get('sort')];
 
         $allParams = $request->isMethod(Request::METHOD_POST)
             ? $request->request->all()
@@ -81,6 +91,7 @@ class DataTables implements DataTablesInterface
         if (count($violations)) {
             $message = $violations->get(0)->getMessage();
             $this->logger->error($message, ['request']);
+
             throw new DataTableException($message);
         }
 
@@ -88,6 +99,7 @@ class DataTables implements DataTablesInterface
         if (!array_key_exists($id, $this->services)) {
             $message = 'Unknown DataTable ID.';
             $this->logger->error($message, [$id]);
+
             throw new DataTableException($message);
         }
 
@@ -101,12 +113,11 @@ class DataTables implements DataTablesInterface
 
         try {
             $result = $this->services[$id]->handle($query);
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $this->logger->error($e->getMessage(), [$this->services[$id]]);
+
             throw new DataTableException($e->getMessage());
-        }
-        finally {
+        } finally {
             $timer_stopped = microtime(true);
             $this->logger->debug('DataTable processing time', [$timer_stopped - $timer_started, $this->services[$id]]);
         }
@@ -116,6 +127,7 @@ class DataTables implements DataTablesInterface
         if (count($violations)) {
             $message = $violations->get(0)->getMessage();
             $this->logger->error($message, ['response']);
+
             throw new DataTableException($message);
         }
 

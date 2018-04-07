@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\MetronicDataTableBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
@@ -21,7 +30,7 @@ class WidicorpMetronicDataTableExtension extends Extension implements CompilerPa
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('datatables.yml');
     }
 
@@ -35,8 +44,7 @@ class WidicorpMetronicDataTableExtension extends Extension implements CompilerPa
         }
 
         $definition = $container->findDefinition('datatables');
-        $services   = $container->findTaggedServiceIds('datatable');
-
+        $services = $container->findTaggedServiceIds('datatable');
 
         /** @var array $tags */
         foreach ($services as $id => $tags) {

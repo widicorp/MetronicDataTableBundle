@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\MetronicDataTableBundle;
 
 /**
@@ -10,9 +19,9 @@ class ValueObject
     /**
      * Checks whether specified property exists.
      *
-     * @param string $name Name of the property.
+     * @param string $name name of the property
      *
-     * @return bool TRUE if the property exists, FALSE otherwise.
+     * @return bool TRUE if the property exists, FALSE otherwise
      */
     public function __isset(string $name): bool
     {
@@ -22,11 +31,11 @@ class ValueObject
     /**
      * Returns current value of specified property.
      *
-     * @param string $name Name of the property.
+     * @param string $name name of the property
      *
-     * @throws \BadMethodCallException If the property doesn't exist.
+     * @throws \BadMethodCallException if the property doesn't exist
      *
-     * @return mixed Current value of the property.
+     * @return mixed current value of the property
      */
     public function __get(string $name)
     {
@@ -40,8 +49,8 @@ class ValueObject
     /**
      * Prevents object's properties from modification.
      *
-     * @param string $name  Name of the property.
-     * @param mixed  $value New value of the property.
+     * @param string $name  name of the property
+     * @param mixed  $value new value of the property
      */
     final public function __set(string $name, $value)
     {
