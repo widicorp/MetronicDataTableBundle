@@ -1,4 +1,5 @@
 # MetronicDataTableBundle
+[![StyleCI](https://styleci.io/repos/128211339/shield?branch=master)](https://styleci.io/repos/128211339)
 
 This bundle helps to implement data source actions for [mDataTables](https://keenthemes.com/metronic/documentation.html#sec14) JavaScript plugin when it's used in [remote-type processing](https://keenthemes.com/metronic/documentation.html#sec14) mode.
 
