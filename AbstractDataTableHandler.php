@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Widicorp KafkaBundle package.
+ * This file is part of the Widicorp MetronicDataTableBundle package.
  *
  * (c) Widicorp <info@widitrade.com>
  *
