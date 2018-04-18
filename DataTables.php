@@ -74,7 +74,7 @@ class DataTables implements DataTablesInterface
         $pagination = $request->get('pagination');
 
         $start = ($pagination['page'] - 1) * $pagination['perpage'];
-        $params->start = ($start > 0 && (!isset($pagination['total']) || $start <= $pagination['total'])) ? $start : 0;
+        $params->start = ($start > 0 && (!isset($pagination['total']) || $start < $pagination['total'])) ? $start : 0;
         $params->length = $pagination['perpage'];
         $params->search = $request->get('query')['generalSearch'] ?? '';
         $params->order = [$request->get('sort')];
