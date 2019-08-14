@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Widicorp MetronicDataTableBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\MetronicDataTableBundle;
 
 /**
@@ -16,9 +25,13 @@ namespace Widicorp\MetronicDataTableBundle;
 class DataTableQuery extends ValueObject implements \JsonSerializable
 {
     protected $start;
+
     protected $length;
+
     protected $search;
+
     protected $order;
+
     protected $customData;
 
     /**
@@ -28,7 +41,7 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
      */
     public function __construct(Parameters $params)
     {
-        $this->start  = (int) $params->start;
+        $this->start = (int) $params->start;
         $this->length = (int) $params->length;
 
         $this->search = new Search($params->search);
@@ -41,7 +54,6 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
         }, $params->order);
 
         $this->customData = $params->customData;
-
     }
 
     /**
@@ -54,10 +66,10 @@ class DataTableQuery extends ValueObject implements \JsonSerializable
         };
 
         return [
-            'start'   => $this->start,
-            'length'  => $this->length,
-            'search'  => $this->search,
-            'order'   => array_map($callback, $this->order),
+            'start' => $this->start,
+            'length' => $this->length,
+            'search' => $this->search,
+            'order' => array_map($callback, $this->order),
         ];
     }
 }
