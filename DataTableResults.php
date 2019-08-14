@@ -61,6 +61,12 @@ class DataTableResults implements \JsonSerializable
     public $data = [];
 
     /**
+     * @Assert\NotNull
+     * @Assert\Type(type="array")
+     */
+    public $totalDataRow = [];
+
+    /**
      * Convert results into array as expected by DataTables plugin.
      *
      * @return array
@@ -77,6 +83,7 @@ class DataTableResults implements \JsonSerializable
                 'field' => $this->field,
             ],
             'data' => $this->data,
+            'totalDataRow' => $this->totalDataRow,
         ];
     }
 }
